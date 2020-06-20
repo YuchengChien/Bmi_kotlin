@@ -31,6 +31,12 @@ class MainActivity : AppCompatActivity() {
         val bmi = weight  / (height*height)
         Log.d(TAG, "Your BMI is $bmi")
         Intent(this, ResultActivity::class.java).apply {
+            val bag = Bundle()
+            bag.putFloat("BMI_EXTRA", bmi)
+            bag.putString("TEST_EXTRA", "Testing")
+            putExtras(bag)
+
+            /*putExtra("BMI_EXTRA", bmi)*/
             startActivity(this)
         }
 
