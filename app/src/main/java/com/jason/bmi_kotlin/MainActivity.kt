@@ -1,5 +1,6 @@
 package com.jason.bmi_kotlin
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -29,11 +30,22 @@ class MainActivity : AppCompatActivity() {
         val height = ed_height.text.toString().toFloat()
         val bmi = weight  / (height*height)
         Log.d(TAG, "Your BMI is $bmi")
+        Intent(this, ResultActivity::class.java).apply {
+            startActivity(this)
+        }
+
+        /*
+        val intent = Intent(this, ResultActivity::class.java)
+        startActivity(intent)
+        */
+
+        /*
         Toast.makeText(this, bmi.toString(), Toast.LENGTH_LONG).show()
         AlertDialog.Builder(this)
             .setMessage(bmi.toString())
             .setTitle("Your BMI")
             .setPositiveButton("OK", null)
             .show()
+         */
     }
 }
