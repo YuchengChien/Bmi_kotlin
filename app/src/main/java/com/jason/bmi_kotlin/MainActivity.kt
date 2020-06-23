@@ -16,6 +16,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        Log.d(TAG, "onCreate")
         b_help.setOnClickListener {
             AlertDialog.Builder(this)
                 .setTitle("BMI說明")
@@ -25,6 +26,36 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    override fun onPause() {
+        super.onPause()
+        Log.d(TAG, "onPause")
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        Log.d(TAG, "onDestroy")
+    }
+
+    override fun onStart() {
+        super.onStart()
+        Log.d(TAG, "onStart")
+    }
+
+    override fun onRestart() {
+        super.onRestart()
+        Log.d(TAG, "onRestart")
+    }
+
+    override fun onResume() {
+        super.onResume()
+        Log.d(TAG, "onResume")
+    }
+
+    override fun onStop() {
+        super.onStop()
+        Log.d(TAG, "onStop")
+    }
+
     fun bmi(view : View) {
         val weight = ed_weight.text.toString().toFloat()
         val height = ed_height.text.toString().toFloat()
@@ -32,7 +63,7 @@ class MainActivity : AppCompatActivity() {
         Log.d(TAG, "Your BMI is $bmi")
         Intent(this, ResultActivity::class.java).apply {
             val bag = Bundle()
-            bag.putFloat("BMI_EXTRA", bmi)
+            bag.putFloat(getString(R.string.bmi_extra), bmi)
             bag.putString("TEST_EXTRA", "Testing")
             putExtras(bag)
 
